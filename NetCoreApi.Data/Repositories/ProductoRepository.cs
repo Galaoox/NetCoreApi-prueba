@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetCoreApi.Data.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +17,7 @@ namespace NetCoreApi.Data.Repositories
         public async Task<bool> DeleteProducto(Producto producto)
         {
             producto.Disabled = 1;
-            _context.Update(producto);
+            _context.Productos.Update(producto);
             await _context.SaveChangesAsync();
             return true;
         }
@@ -42,16 +41,21 @@ namespace NetCoreApi.Data.Repositories
 
         public async Task<bool> InsertProducto(Producto producto)
         {
-            _context.Add(producto);
+            _context.Productos.Add(producto);
             await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> UpdateProducto(Producto producto)
         {
-            _context.Update(producto);
+            _context.Productos.Update(producto);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<bool> ExistProducto(int id)
+        {
+            return await _context.Productos.AnyAsync(x => x.Id.Equals(id) && !x.Disabled.Equals(1));
         }
     }
 }

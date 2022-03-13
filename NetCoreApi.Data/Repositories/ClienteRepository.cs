@@ -34,23 +34,28 @@ namespace NetCoreApi.Data.Repositories
             return await _context.Clientes.FirstOrDefaultAsync(x => x.Id.Equals(id) && !x.Disabled.Equals(1));
         }
 
+        public async Task<bool> ExistCliente(int id)
+        {
+            return await _context.Clientes.AnyAsync(x => x.Id.Equals(id) && !x.Disabled.Equals(1));
+        }
+
         public async Task<bool> InsertCliente(Cliente cliente)
         {
-            _context.Add(cliente);
+            _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> UpdateCliente(Cliente cliente)
         {
-            _context.Update(cliente);
+            _context.Clientes.Update(cliente);
             await _context.SaveChangesAsync();
             return true;
         }
         public async Task<bool> DeleteCliente(Cliente cliente)
         {
             cliente.Disabled = 1;
-            _context.Update(cliente);
+            _context.Clientes.Update(cliente);
             await _context.SaveChangesAsync();
             return true;
         }

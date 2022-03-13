@@ -38,7 +38,7 @@ namespace NetCoreApi.Services
 
         public async Task<bool> UpdateCliente(int id, ClienteDTO cliente)
         {
-            await GetClient(id);
+            await ValidateIfExistCliente(id);
             cliente.Id = id;
             return await _clienteRepository.UpdateCliente(_mapper.Map<ClienteDTO, Cliente>(cliente));
         }
@@ -47,6 +47,13 @@ namespace NetCoreApi.Services
         {
             var cliente = await GetClient(id);
             return await _clienteRepository.DeleteCliente(cliente);
+        }
+
+        private async Task<bool> ValidateIfExistCliente(int id)
+        {
+            var exist = await _clienteRepository.ExistCliente(id);
+            if (!exist) throw new Exception("No se encontro el cliente");
+            return exist;
         }
 
         private async Task<Cliente> GetClient(int id)

@@ -4,8 +4,6 @@ using NetCoreApi.Data.Repositories;
 using NetCoreApi.Services.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NetCoreApi.Services
@@ -21,36 +19,48 @@ namespace NetCoreApi.Services
         }
 
 
-        public Task<bool> DeleteProducto(int id)
+        public async Task<bool> DeleteProducto(int id)
         {
-            throw new NotImplementedException();
+            var producto = await GetClient(id);
+            return await _productoRepository.DeleteProducto(producto);
         }
 
-        public Task<List<ProductoDto>> GetAllProductos()
+        public async Task<List<ProductoDto>> GetAllProductos()
         {
-            throw new NotImplementedException();
+            var result = await _productoRepository.GetAllProductos();
+            return _mapper.Map<List<Producto>, List<ProductoDto>>(result);
         }
 
-        public Task<ProductoDto> GetProductoDetails(int id)
+        public async Task<ProductoDto> GetProductoDetails(int id)
         {
-            throw new NotImplementedException();
+            var producto = await GetClient(id);
+            return _mapper.Map<Producto, ProductoDto>(producto);
         }
 
-        public Task<bool> InsertProducto(ProductoDto producto)
+        public async Task<bool> InsertProducto(ProductoDto producto)
         {
-            throw new NotImplementedException();
+            return await _productoRepository.InsertProducto(_mapper.Map<ProductoDto, Producto>(producto));
         }
 
-        public Task<bool> UpdateProducto(int id, ProductoDto producto)
+        public async Task<bool> UpdateProducto(int id, ProductoDto producto)
         {
-            throw new NotImplementedException();
+            await ValidateIfExistCliente(id);
+            producto.Id = id;
+            return await _productoRepository.UpdateProducto(_mapper.Map<ProductoDto, Producto>(producto));
         }
 
-        private async Task<Producto> GetProducto(int id)
+        private async Task<bool> ValidateIfExistCliente(int id)
         {
-            var cliente = await _productoRepository.GetProductoDetails(id);
-            if (cliente == null) throw new Exception("No se encontro el producto");
-            return cliente;
+            var exist = await _productoRepository.ExistProducto(id);
+            if (!exist) throw new Exception("No se encontro el producto");
+            return exist;
+        }
+
+        private async Task<Producto> GetClient(int id)
+        {
+            var producto = await _productoRepository.GetProductoDetails(id);
+            if (producto == null) throw new Exception("No se encontro el producto");
+            return producto;
         }
     }
 }

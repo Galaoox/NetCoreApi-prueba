@@ -11,5 +11,7 @@ namespace NetCoreApi.Data.Repositories
         Task<bool> InsertProducto(Producto producto);
         Task<bool> UpdateProducto(Producto producto);
         Task<bool> DeleteProducto(Producto producto);
+        Task<bool> ExistProducto(int id);
+
     }
 }

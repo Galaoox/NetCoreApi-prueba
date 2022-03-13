@@ -11,7 +11,7 @@ namespace NetCoreApi.Data.Repositories
         Task<bool> InsertCliente(Cliente cliente);
         Task<bool> UpdateCliente(Cliente cliente);
         Task<bool> DeleteCliente(Cliente cliente);
-
+        Task<bool> ExistCliente(int id);
 
     }
 }
