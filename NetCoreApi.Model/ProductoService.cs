@@ -21,7 +21,7 @@ namespace NetCoreApi.Services
 
         public async Task<bool> DeleteProducto(int id)
         {
-            var producto = await GetClient(id);
+            var producto = await GetProducto(id);
             return await _productoRepository.DeleteProducto(producto);
         }
 
@@ -33,7 +33,7 @@ namespace NetCoreApi.Services
 
         public async Task<ProductoDto> GetProductoDetails(int id)
         {
-            var producto = await GetClient(id);
+            var producto = await GetProducto(id);
             return _mapper.Map<Producto, ProductoDto>(producto);
         }
 
@@ -56,7 +56,7 @@ namespace NetCoreApi.Services
             return exist;
         }
 
-        private async Task<Producto> GetClient(int id)
+        private async Task<Producto> GetProducto(int id)
         {
             var producto = await _productoRepository.GetProductoDetails(id);
             if (producto == null) throw new Exception("No se encontro el producto");

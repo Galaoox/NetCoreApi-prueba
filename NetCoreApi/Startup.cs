@@ -27,9 +27,11 @@ namespace NetCoreApi
             //Repositories
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IProductoRepository, ProductoRepository>();
+            services.AddScoped<IVentaRepository, VentaRepository>();
             //Services
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<IVentaService, VentaService>();
 
             services.AddControllers();
             services.AddDbContext<ProductosDBContext>(options =>

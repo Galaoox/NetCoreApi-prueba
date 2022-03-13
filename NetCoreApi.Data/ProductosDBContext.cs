@@ -18,7 +18,7 @@ namespace NetCoreApi.Data
 
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
-        public virtual DbSet<Venta> Venta { get; set; }
+        public virtual DbSet<Venta> Ventas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

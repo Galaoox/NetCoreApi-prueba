@@ -27,7 +27,7 @@ namespace NetCoreApi.Services
 
         public async Task<ClienteDTO> GetClienteDetails(int id)
         {
-            var cliente = await GetClient(id);
+            var cliente = await GetCliente(id);
             return _mapper.Map<Cliente, ClienteDTO>(cliente);
         }
 
@@ -45,7 +45,7 @@ namespace NetCoreApi.Services
 
         public async Task<bool> DeleteCliente(int id)
         {
-            var cliente = await GetClient(id);
+            var cliente = await GetCliente(id);
             return await _clienteRepository.DeleteCliente(cliente);
         }
 
@@ -56,7 +56,7 @@ namespace NetCoreApi.Services
             return exist;
         }
 
-        private async Task<Cliente> GetClient(int id)
+        private async Task<Cliente> GetCliente(int id)
         {
             var cliente = await _clienteRepository.GetClienteDetails(id);
             if (cliente == null) throw new Exception("No se encontro el cliente");
