@@ -84,7 +84,7 @@ namespace NetCoreApi.Data
 
                 entity.Property(e => e.IdProducto).HasColumnName("id_producto");
 
-                entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+                entity.Property(e => e.IdCliente).HasColumnName("id_cliente");
 
                 entity.Property(e => e.ValorTotal)
                     .HasColumnType("decimal(16, 2)")
@@ -102,7 +102,7 @@ namespace NetCoreApi.Data
 
                 entity.HasOne(d => d.Cliente)
                     .WithMany(p => p.Venta)
-                    .HasForeignKey(d => d.IdUsuario)
+                    .HasForeignKey(d => d.IdCliente)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_venta_cliente");
             });

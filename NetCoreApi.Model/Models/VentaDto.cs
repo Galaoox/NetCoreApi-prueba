@@ -7,7 +7,7 @@
         public int Cantidad { get; set; }
         public decimal ValorUnitario { get; set; }
         public decimal ValorTotal { get; set; }
-        public int IdUsuario { get; set; }
+        public int IdCliente { get; set; }
         public short? Disabled { get; set; }
         public ProductoDto Producto { get; set; }
         public ClienteDto Cliente { get; set; }

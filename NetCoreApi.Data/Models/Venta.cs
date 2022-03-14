@@ -9,7 +9,7 @@ namespace NetCoreApi.Data.Models
         public int Cantidad { get; set; }
         public decimal ValorUnitario { get; set; }
         public decimal ValorTotal { get; set; }
-        public int IdUsuario { get; set; }
+        public int IdCliente { get; set; }
         public short Disabled { get; set; }
 
         public virtual Producto Producto { get; set; }
