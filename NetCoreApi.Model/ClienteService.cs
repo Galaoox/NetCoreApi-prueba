@@ -31,16 +31,16 @@ namespace NetCoreApi.Services
             return _mapper.Map<Cliente, ClienteDto>(cliente);
         }
 
-        public async Task<bool> InsertCliente(ClienteDTO cliente)
+        public async Task<bool> InsertCliente(ClienteDto cliente)
         {
-            return await _clienteRepository.InsertCliente(_mapper.Map<ClienteDTO, Cliente>(cliente));
+            return await _clienteRepository.InsertCliente(_mapper.Map<ClienteDto, Cliente>(cliente));
         }
 
-        public async Task<bool> UpdateCliente(int id, ClienteDTO cliente)
+        public async Task<bool> UpdateCliente(int id, ClienteDto cliente)
         {
             await ValidateIfExistCliente(id);
             cliente.Id = id;
-            return await _clienteRepository.UpdateCliente(_mapper.Map<ClienteDTO, Cliente>(cliente));
+            return await _clienteRepository.UpdateCliente(_mapper.Map<ClienteDto, Cliente>(cliente));
         }
 
         public async Task<bool> DeleteCliente(int id)
