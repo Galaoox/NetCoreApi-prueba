@@ -33,8 +33,7 @@ namespace NetCoreApi.Data
                 entity.Property(e => e.Apellido)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasColumnName("apellido")
-                    .IsFixedLength(true);
+                    .HasColumnName("apellido");
 
                 entity.Property(e => e.Cedula).HasColumnName("cedula");
 
@@ -43,14 +42,12 @@ namespace NetCoreApi.Data
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasColumnName("nombre")
-                    .IsFixedLength(true);
+                    .HasColumnName("nombre");
 
                 entity.Property(e => e.Telefono)
                     .IsRequired()
                     .HasMaxLength(15)
-                    .HasColumnName("telefono")
-                    .IsFixedLength(true);
+                    .HasColumnName("telefono");
             });
 
             modelBuilder.Entity<Producto>(entity =>
@@ -64,8 +61,7 @@ namespace NetCoreApi.Data
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasColumnName("nombre")
-                    .IsFixedLength(true);
+                    .HasColumnName("nombre");
 
                 entity.Property(e => e.ValorUnitario)
                     .HasColumnType("decimal(16, 2)")
