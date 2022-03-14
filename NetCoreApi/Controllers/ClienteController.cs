@@ -54,7 +54,7 @@ namespace NetCoreApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ClienteDTO client)
+        public async Task<IActionResult> Post([FromBody] ClienteDto client)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace NetCoreApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] ClienteDTO client)
+        public async Task<IActionResult> Put(int id, [FromBody] ClienteDto client)
         {
             try
             {

@@ -6,10 +6,10 @@ namespace NetCoreApi.Services
 {
     public interface IClienteService
     {
-        Task<List<ClienteDTO>> GetAllClientes();
-        Task<ClienteDTO> GetClienteDetails(int id);
-        Task<bool> InsertCliente(ClienteDTO cliente);
-        Task<bool> UpdateCliente(int id, ClienteDTO cliente);
+        Task<List<ClienteDto>> GetAllClientes();
+        Task<ClienteDto> GetClienteDetails(int id);
+        Task<bool> InsertCliente(ClienteDto cliente);
+        Task<bool> UpdateCliente(int id, ClienteDto cliente);
         Task<bool> DeleteCliente(int id);
 
     }

@@ -19,16 +19,16 @@ namespace NetCoreApi.Services
             _clienteRepository = clienteRepository;
             _mapper = mapper;
         }
-        public async Task<List<ClienteDTO>> GetAllClientes()
+        public async Task<List<ClienteDto>> GetAllClientes()
         {
             var result = await _clienteRepository.GetAllClientes();
-            return _mapper.Map<List<Cliente>, List<ClienteDTO>>(result);
+            return _mapper.Map<List<ClienteDto>>(result);
         }
 
-        public async Task<ClienteDTO> GetClienteDetails(int id)
+        public async Task<ClienteDto> GetClienteDetails(int id)
         {
             var cliente = await GetCliente(id);
-            return _mapper.Map<Cliente, ClienteDTO>(cliente);
+            return _mapper.Map<Cliente, ClienteDto>(cliente);
         }
 
         public async Task<bool> InsertCliente(ClienteDTO cliente)

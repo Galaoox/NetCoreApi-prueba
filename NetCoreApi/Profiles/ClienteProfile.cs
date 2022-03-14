@@ -8,8 +8,8 @@ namespace NetCoreApi.Profiles
     {
         public ClienteProfile()
         {
-            CreateMap<Cliente, ClienteDTO>();
-            CreateMap<ClienteDTO, Cliente>();
+            CreateMap<Cliente, ClienteDto>();
+            CreateMap<ClienteDto, Cliente>();
 
         }
     }

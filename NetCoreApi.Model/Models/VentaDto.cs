@@ -10,6 +10,6 @@
         public int IdUsuario { get; set; }
         public short? Disabled { get; set; }
         public ProductoDto Producto { get; set; }
-        public ClienteDTO Cliente { get; set; }
+        public ClienteDto Cliente { get; set; }
     }
 }

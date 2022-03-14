@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    volumes:
+      - ~/NetCoreApi_Prueba/data:/var/opt/mssql/data
+      - ~/NetCoreApi_Prueba/log:/var/opt/mssql/log
+      - ~/NetCoreApi_Prueba/secrets:/var/opt/mssql/secrets
+    environment:
+      ACCEPT_EULA: y
+      SA_PASSWORD: Gge.258789
+      MSSQL_PID: Express
+      
